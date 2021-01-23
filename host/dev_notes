@@ -1,0 +1,159 @@
+In chromium get_iplayer command is not available. The shell started by chromium has a different PATH.
+
+
+echo $PATH
+
+/snap/chromium/1444/usr/sbin:/snap/chromium/1444/usr/bin:/snap/chromium/1444/sbin:/snap/chromium/1444/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/chromium/1444/gnome-platform/usr/bin
+
+
+https://www.linuxtopia.org/online_books/opensuse_guides/apparmor_guide/apparmor_bx5bmkt.html
+less /var/lib/snapd/apparmor/profiles/snap.chromium.chromium
+https://help.ubuntu.com/community/AppArmor
+
+maybe edit the profile to allow it to execute HOME/snap/get_iplayer executable
+
+maybe if get_iplayer is installed not as a snap it will be available from the chromium snap?
+
+
+
+
+//1) Add options page which has logs div of all messages received (prefixed with requested pid/program name)
+//2) Add get_iplayer preferences and profiles config:
+ -// download folder  --subdir-format="<category>/<nameshort>-<seriesnum>"
+ - XXinput field for extra args of configs to set (free text) 
+ - //print current config
+//3) track tasks and detect early end / success
+// 4) download buttons on program page
+//5) download button disabled after clicked, and for programs in download history
+//6) toolbar action popup display task list with started - queued - completed - error, pid and name, and link to logs
+7) toolbar action popup task status list has retry (with force and overwrite) and cancel
+8) Clear completed
+9) force and overwrite options
+10) readme
+
+
+
+INFO: Using user options preset 'dl-bbc-radio'
+get_iplayer v3.26, Copyright (C) 2008-2010 Phil Lewis
+This program comes with ABSOLUTELY NO WARRANTY; for details use --warranty.
+This is free software, and you are welcome to redistribute it under certain
+conditions; use --conditions for details.
+Episodes:
+Headliners - Anne-Marie & KSI, BBC Radio 5 live, p094k7rb
+INFO: 1 total programmes
+INFO: 'Headliners - Anne-Marie & KSI (p094k7rb)' already in history (/home/michael/snap/get-iplayer/common/.get_iplayer/download_history) - use --force to override
+
+
+
+
+INFO: Using user options preset 'dl-bbc-radio'
+get_iplayer v3.26, Copyright (C) 2008-2010 Phil Lewis
+This program comes with ABSOLUTELY NO WARRANTY; for details use --warranty.
+This is free software, and you are welcome to redistribute it under certain
+conditions; use --conditions for details.
+Episodes:
+Headliners - Hugh Fearnley-Whittingstall, BBC Radio 5 live, p093x0xd
+INFO: 1 total programmes
+INFO: Downloading radio: 'Headliners - Hugh Fearnley-Whittingstall (p093x0xd) [podcast]'
+1.0% of ~37.78 MB @ 1.5 Mb/s ETA: 00:03:16 (hafmed1/ll) [audio]
+2.0% of ~37.78 MB @ 1.2 Mb/s ETA: 00:04:03 (hafmed1/ll) [audio]
+3.0% of ~37.78 MB @ 1.5 Mb/s ETA: 00:03:13 (hafmed1/ll) [audio]
+4.0% of ~37.78 MB @ 1.3 Mb/s ETA: 00:03:34 (hafmed1/ll) [audio]
+5.0% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:27 (hafmed1/ll) [audio]
+6.0% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:22 (hafmed1/ll) [audio]
+7.0% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:18 (hafmed1/ll) [audio]
+8.0% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:14 (hafmed1/ll) [audio]
+9.0% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:11 (hafmed1/ll) [audio]
+10.0% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:17 (hafmed1/ll) [audio]
+11.0% of ~37.78 MB @ 1.5 Mb/s ETA: 00:03:05 (hafmed1/ll) [audio]
+12.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:09 (hafmed1/ll) [audio]
+13.1% of ~37.78 MB @ 1.5 Mb/s ETA: 00:02:59 (hafmed1/ll) [audio]
+14.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:03 (hafmed1/ll) [audio]
+15.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:03:00 (hafmed1/ll) [audio]
+16.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:57 (hafmed1/ll) [audio]
+17.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:54 (hafmed1/ll) [audio]
+18.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:52 (hafmed1/ll) [audio]
+19.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:49 (hafmed1/ll) [audio]
+20.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:47 (hafmed1/ll) [audio]
+21.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:48 (hafmed1/ll) [audio]
+22.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:45 (hafmed1/ll) [audio]
+23.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:43 (hafmed1/ll) [audio]
+24.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:40 (hafmed1/ll) [audio]
+25.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:38 (hafmed1/ll) [audio]
+26.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:35 (hafmed1/ll) [audio]
+27.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:33 (hafmed1/ll) [audio]
+28.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:33 (hafmed1/ll) [audio]
+29.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:30 (hafmed1/ll) [audio]
+30.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:28 (hafmed1/ll) [audio]
+31.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:25 (hafmed1/ll) [audio]
+32.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:23 (hafmed1/ll) [audio]
+33.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:21 (hafmed1/ll) [audio]
+34.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:20 (hafmed1/ll) [audio]
+35.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:18 (hafmed1/ll) [audio]
+36.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:15 (hafmed1/ll) [audio]
+37.1% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:13 (hafmed1/ll) [audio]
+38.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:11 (hafmed1/ll) [audio]
+39.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:08 (hafmed1/ll) [audio]
+40.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:05 (hafmed1/ll) [audio]
+41.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:02 (hafmed1/ll) [audio]
+42.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:02:00 (hafmed1/ll) [audio]
+43.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:01:59 (hafmed1/ll) [audio]
+44.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:01:58 (hafmed1/ll) [audio]
+45.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:01:58 (hafmed1/ll) [audio]
+46.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:01:56 (hafmed1/ll) [audio]
+47.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:01:55 (hafmed1/ll) [audio]
+48.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:01:53 (hafmed1/ll) [audio]
+49.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:01:52 (hafmed1/ll) [audio]
+50.2% of ~37.78 MB @ 1.4 Mb/s ETA: 00:01:51 (hafmed1/ll) [audio]
+51.2% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:49 (hafmed1/ll) [audio]
+52.2% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:47 (hafmed1/ll) [audio]
+53.2% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:46 (hafmed1/ll) [audio]
+54.2% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:44 (hafmed1/ll) [audio]
+55.2% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:42 (hafmed1/ll) [audio]
+56.2% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:41 (hafmed1/ll) [audio]
+57.2% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:39 (hafmed1/ll) [audio]
+58.2% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:37 (hafmed1/ll) [audio]
+59.3% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:35 (hafmed1/ll) [audio]
+60.3% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:33 (hafmed1/ll) [audio]
+61.3% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:31 (hafmed1/ll) [audio]
+62.3% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:29 (hafmed1/ll) [audio]
+63.3% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:27 (hafmed1/ll) [audio]
+64.3% of ~37.78 MB @ 1.3 Mb/s ETA: 00:01:25 (hafmed1/ll) [audio]
+65.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:24 (hafmed1/ll) [audio]
+66.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:21 (hafmed1/ll) [audio]
+67.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:19 (hafmed1/ll) [audio]
+68.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:18 (hafmed1/ll) [audio]
+69.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:15 (hafmed1/ll) [audio]
+70.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:13 (hafmed1/ll) [audio]
+71.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:11 (hafmed1/ll) [audio]
+72.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:08 (hafmed1/ll) [audio]
+73.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:06 (hafmed1/ll) [audio]
+74.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:04 (hafmed1/ll) [audio]
+75.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:01:01 (hafmed1/ll) [audio]
+76.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:59 (hafmed1/ll) [audio]
+77.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:57 (hafmed1/ll) [audio]
+78.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:54 (hafmed1/ll) [audio]
+79.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:52 (hafmed1/ll) [audio]
+80.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:50 (hafmed1/ll) [audio]
+81.3% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:47 (hafmed1/ll) [audio]
+82.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:45 (hafmed1/ll) [audio]
+83.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:42 (hafmed1/ll) [audio]
+84.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:40 (hafmed1/ll) [audio]
+85.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:37 (hafmed1/ll) [audio]
+86.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:35 (hafmed1/ll) [audio]
+87.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:32 (hafmed1/ll) [audio]
+88.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:30 (hafmed1/ll) [audio]
+89.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:27 (hafmed1/ll) [audio]
+90.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:24 (hafmed1/ll) [audio]
+91.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:22 (hafmed1/ll) [audio]
+92.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:19 (hafmed1/ll) [audio]
+93.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:17 (hafmed1/ll) [audio]
+94.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:14 (hafmed1/ll) [audio]
+95.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:12 (hafmed1/ll) [audio]
+96.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:09 (hafmed1/ll) [audio]
+97.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:06 (hafmed1/ll) [audio]
+98.4% of ~37.78 MB @ 1.2 Mb/s ETA: 00:00:04 (hafmed1/ll) [audio]
+99.4% of ~37.78 MB @ 1.1 Mb/s ETA: 00:00:01 (hafmed1/ll) [audio]
+INFO: Downloaded: 37.77 MB (00:49:23) @ 1.15 Mb/s (hafmed1/ll) [audio]
+INFO: Converting to M4A
+INFO: Tagging M4A

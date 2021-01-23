@@ -1,0 +1,34 @@
+.sc-c-playable-list-card--hover-enabled .sc-c-playable-list-card__link:active .dl-button:hover~* .sc-o-responsive-image__svg,
+ .sc-c-playable-list-card--hover-enabled .sc-c-playable-list-card__link:focus .dl-button:hover~* .sc-o-responsive-image__svg,
+  .sc-c-playable-list-card--hover-enabled .sc-c-playable-list-card__link:hover .dl-button:hover~* .sc-o-responsive-image__svg {
+    opacity: 0;
+}
+
+.sc-c-playable-list-card--hover-enabled .sc-c-playable-list-card__link:active .dl-button:hover~* .sc-o-responsive-image__overlay,
+ .sc-c-playable-list-card--hover-enabled .sc-c-playable-list-card__link:focus .dl-button:hover~* .sc-o-responsive-image__overlay,
+  .sc-c-playable-list-card--hover-enabled .sc-c-playable-list-card__link:hover .dl-button:hover~* .sc-o-responsive-image__overlay {
+      background-color: transparent;
+}
+
+
+.sc-c-basic--hover-enabled .sc-c-basic__link:active .dl-button:hover~* .sc-o-responsive-image__svg,
+ .sc-c-basic--hover-enabled .sc-c-basic__link:focus .dl-button:hover~* .sc-o-responsive-image__svg,
+  .sc-c-basic--hover-enabled .sc-c-basic__link:hover .dl-button:hover~* .sc-o-responsive-image__svg {
+    opacity: 0;
+}
+
+.sc-c-basic--hover-enabled .sc-c-basic__link:active .dl-button:hover~* .sc-o-responsive-image__overlay,
+ .sc-c-basic--hover-enabled .sc-c-basic__link:focus .dl-button:hover~* .sc-o-responsive-image__overlay,
+  .sc-c-basic--hover-enabled .sc-c-basic__link:hover .dl-button:hover~* .sc-o-responsive-image__overlay {
+    background-color: transparent;
+}
+
+button.dl-button:hover {
+    filter: brightness(0.6);
+    transform: scale(1.2);
+}
+button.dl-button:disabled {
+  filter: grayscale(1);
+  cursor: not-allowed !important; 
+  transform: none;
+}

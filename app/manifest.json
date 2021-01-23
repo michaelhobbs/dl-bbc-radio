@@ -1,0 +1,30 @@
+{
+  // Extension ID: knldjmfmopnpolahpmmgbagdohdnhkik
+  "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcBHwzDvyBQ6bDppkIs9MP4ksKqCMyXQ/A52JivHZKh4YO/9vJsT3oaYhSpDCE9RPocOEQvwsHsFReW2nUEc6OLLyoCFFxIb7KkLGsmfakkut/fFdNJYh0xOTbSN8YvLWcqph09XAY2Y/f0AL7vfO1cuCqtkMt8hFrBGWxDdf9CQIDAQAB",
+  "name": "dl-bbc-radio",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Browser-based UI for get_iplayer to simplify recording programmes from bbc.co.uk/sounds.",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "action.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.bbc.co.uk/sounds*"],
+      "js": ["contentScript.js"],
+      "css": ["contentScript.css"]
+    }
+  ],
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "permissions": [
+    "nativeMessaging",
+    "storage"
+  ],
+  "options_page": "options.html"
+}

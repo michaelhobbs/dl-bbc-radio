@@ -1,0 +1,9 @@
+{
+  "name": "dl.bbc.radio",
+  "description": "Get_iplayer wrapper for bbs.co.uk/sounds.",
+  "path": "HOST_PATH",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
+  ]
+}
