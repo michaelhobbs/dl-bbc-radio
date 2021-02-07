@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src='./options.js'></script>
-    </head>
-    <body style="margin: 8px auto; width: 800px;">
-        <div style="min-width: 200px; display: flex;"><img src="./icon.svg" height="50px"/>&nbsp;&nbsp;&nbsp;<h1>dl-bbc-radio</h1></div>
-        <div style="min-width: 200px; display: flex;">
-          <a href="./logs.html">Logs</a>&nbsp;|&nbsp;<a href="./options.html">Options</a>&nbsp;|&nbsp;<a href="./action.html">Task Manager</a>
-        </div>
+
+<head>
+    <script src='./options.js'></script>
+</head>
+
+<body style="margin: 8px auto; width: 800px;">
+    <div style="min-width: 200px; display: flex;"><img src="./icon.svg" height="50px" />&nbsp;&nbsp;&nbsp;<h1>
+            dl-bbc-radio</h1>
+    </div>
+    <div style="min-width: 200px; display: flex;">
+        <a href="./logs.html">Logs</a>&nbsp;|&nbsp;<a href="./options.html">Options</a>&nbsp;|&nbsp;<a
+            href="./action.html">Task Manager</a>
+    </div>
+    <br>
+    <h2>Options</h2>
+    <p>By default dl-bbc-radio saves programs to the directory where the extension is installed. Usually this is the
+        first option to configure.</p>
+    <p>dl-bbc-radio uses a get_iplayer preset (dl-bbc-radio) to store the configuration it should use. Here you can view
+        the settings and edit them. See: <a href="https://github.com/get-iplayer/get_iplayer/wiki/prefs">get_iplayer
+            documentation</a> for available options.</p>
+
+    <p>For adding other get_iplayer settings to the recording command, use the get_iplayer CLI to add prefs for preset
+        <em>dl-bbc-radio</em> or a text editor to modify the preset manually. eg:
+    </p>
+    <pre>get_iplayer --preset=dl-bbc-radio --prefs-add --no-artwork</pre>
+    <p>get_iplayer options are documented on their <a
+            href="https://github.com/get-iplayer/get_iplayer/wiki/prefs">wiki</a>.</p>
+
+    <br><br>
+
+    <fieldset style="width: fit-content;">
+        <div style="    display: flex;
+            align-items: center;
+            justify-content: space-between;"><label for="output">Output directory:</label><input id="output" size="50"
+                style="align-self: flex-end;" /></div>
+        <div style="    display: flex;
+            align-items: center;
+            justify-content: space-between;"><label for="subdir">Use subdirectory:</label><input id="subdir"
+                type="checkbox" /></div>
+        <div style="    display: flex;
+            align-items: center;
+            justify-content: space-between;"><label for="subdir-format">Output subdirectory format:</label><input
+                id="subdir-format" size="50" /></div>
         <br>
-        <h2>Options</h2>
-        <p>By default dl-bbc-radio saves programs to the directory where the extension is installed. Usually this is the first option to configure.</p>
-        <p>dl-bbc-radio uses a get_iplayer preset (dl-bbc-radio) to store the configuration it should use. Here you can view the settings and edit them. See: <a href="https://github.com/get-iplayer/get_iplayer/wiki/prefs">get_iplayer documentation</a> for available options.</p>
+        <div><button id="save-config-button">Save</button> <button id='get-config-button'>Refresh</button></div>
+        <div id="success" style="display: none; color: white; background-color: green; width: fit-content;">OK</div>
+        <div id='fail' style="display: none; color: white; background-color: red; width: fit-content;">Failed</div>
+    </fieldset>
 
-        <p>For adding other get_iplayer settings to the recording command, use the get_iplayer CLI to add prefs for preset <em>dl-bbc-radio</em> or a text editor to modify the preset manually. eg:</p>
-        <pre>get_iplayer --preset=dl-bbc-radio --prefs-add --no-artwork</pre>
-        <p>get_iplayer options are documented on their <a href="https://github.com/get-iplayer/get_iplayer/wiki/prefs">wiki</a>.</p>
+    <br><br>
+    <button id="toggle-logs-button" data-visibility="hidden">Show logs</button>
+    <div id='response' style="display: none;"></div>
+</body>
 
-        <br><br>
-
-        <fieldset style="width: fit-content;">
-            <div style="    display: flex;
-            align-items: center;
-            justify-content: space-between;"><label for="output">Output directory:</label><input id="output" size="50" style="align-self: flex-end;"/></div>
-            <div style="    display: flex;
-            align-items: center;
-            justify-content: space-between;"><label for="subdir">Use subdirectory:</label><input id="subdir" type="checkbox" /></div>
-            <div style="    display: flex;
-            align-items: center;
-            justify-content: space-between;"><label for="subdir-format">Output subdirectory format:</label><input id="subdir-format" size="50"/></div>
-            <br>
-            <div><button id="save-config-button">Save</button>  <button id='get-config-button'>Refresh</button></div>
-            <div id="success" style="display: none; color: white; background-color: green; width: fit-content;">OK</div>
-            <div id='fail' style="display: none; color: white; background-color: red; width: fit-content;">Failed</div>
-        </fieldset>
-
-        <br><br>
-        <button id="toggle-logs-button" data-visibility="hidden">Show logs</button>
-        <div id='response' style="display: none;"></div>
-    </body>
 </html>

@@ -25,7 +25,7 @@ const addTask = (task, pid) => {
     progressBarInner.style.height = '5px';
     progressBarInner.style.width = (task.progress ?? 0) + '%';
     progressBarInner.style.backgroundColor = 'black';
-	progressBarInner.style.transition = 'width 0.5s';
+    progressBarInner.style.transition = 'width 0.5s';
     progressBar.appendChild(progressBarInner);
 
     taskElem.appendChild(pNameElem);
@@ -37,7 +37,7 @@ const addTask = (task, pid) => {
     document.getElementById('tasks').appendChild(taskSeparator);
 };
 
-chrome.storage.local.get(['tasks'], function(result) {
+chrome.storage.local.get(['tasks'], function (result) {
     console.log('Value currently is ', result.tasks);
     const taskList = result.tasks ?? [];
     if (taskList.length === 0) {
@@ -50,7 +50,7 @@ chrome.storage.local.get(['tasks'], function(result) {
     for (const taskIdx in taskList) {
         const task = taskList[taskIdx];
         console.log('generating html for task: ', task);
-        chrome.storage.local.get([task.pid], function(result) {
+        chrome.storage.local.get([task.pid], function (result) {
             const taskData = result[task.pid];
             addTask(taskData, task.pid);
         });
@@ -58,27 +58,41 @@ chrome.storage.local.get(['tasks'], function(result) {
 });
 
 const updateTask = (oldValue, newValue, pid) => {
-    console.log('updating task: ', {oldValue, newValue});
+    console.log('updating task: ', { oldValue, newValue });
     if (!oldValue.pName && newValue.pName) {
-        document.getElementById('pName-' + pid).innerText = newValue.pName;;
+        document.getElementById('pName-' + pid).innerText = newValue.pName;
     }
-    if (oldValue.progress && newValue.progress && oldValue.progress !== newValue.progress) {
+    if (
+        oldValue.progress &&
+        newValue.progress &&
+        oldValue.progress !== newValue.progress
+    ) {
         console.log('getting elem with id: progress-' + pid);
-        document.getElementById('progress-' + pid).innerText = newValue.progress + '%';
-        document.getElementById('progressBar-' + pid).style.width = newValue.progress + '%';
+        document.getElementById('progress-' + pid).innerText =
+            newValue.progress + '%';
+        document.getElementById('progressBar-' + pid).style.width =
+            newValue.progress + '%';
     }
-    if (oldValue.status && newValue.status && oldValue.status !== newValue.status) {
-        document.getElementById('pid-' + pid).innerText = pid + ': ' + newValue.status;
+    if (
+        oldValue.status &&
+        newValue.status &&
+        oldValue.status !== newValue.status
+    ) {
+        document.getElementById('pid-' + pid).innerText =
+            pid + ': ' + newValue.status;
     }
 };
 
 const updateTaskList = (oldValue, newValue) => {
-    console.log('updating task list: ', {oldValue, newValue});
+    console.log('updating task list: ', { oldValue, newValue });
     if (oldValue.length < newValue.length) {
-        chrome.storage.local.get([newValue[newValue.length-1].pid], function(result) {
-            const taskData = result[newValue[newValue.length-1].pid];
-            addTask(taskData, newValue[newValue.length-1].pid);
-        });
+        chrome.storage.local.get(
+            [newValue[newValue.length - 1].pid],
+            function (result) {
+                const taskData = result[newValue[newValue.length - 1].pid];
+                addTask(taskData, newValue[newValue.length - 1].pid);
+            }
+        );
     }
     if (oldValue.length > newValue.length) {
         // TODO: find deleted task and remove its elem
@@ -88,13 +102,17 @@ const updateTaskList = (oldValue, newValue) => {
     }
 };
 
-chrome.storage.onChanged.addListener(function(changes, namespace) {
+chrome.storage.onChanged.addListener(function (changes, namespace) {
     if (namespace !== 'local') {
         return;
     }
     for (var key in changes) {
         var storageChange = changes[key];
-        console.log('Storage key "%s" in namespace "%s" changed. ', key, namespace);
+        console.log(
+            'Storage key "%s" in namespace "%s" changed. ',
+            key,
+            namespace
+        );
         console.log('old: ', storageChange.oldValue);
         console.log('new: ', storageChange.newValue);
         if (storageChange.oldValue?.isTask) {

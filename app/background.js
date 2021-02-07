@@ -4,13 +4,13 @@ let sysStatus = null;
 
 function onDisconnected() {
     port = null;
-    chrome.browserAction.setBadgeText({text: 'off'});
+    chrome.browserAction.setBadgeText({ text: 'off' });
 }
 
 const handleRecordingStatusUpdate = (message) => {
     const pid = message.pid;
 
-    chrome.storage.local.get([pid], function(result) {
+    chrome.storage.local.get([pid], function (result) {
         const task = result[pid];
         const status = message.status;
         task.status = status;
@@ -29,20 +29,20 @@ const handleRecordingStatusUpdate = (message) => {
         if (status === 'success') {
             task.progress = '100';
         }
-        chrome.storage.local.set({[pid]: task});
+        chrome.storage.local.set({ [pid]: task });
     });
 };
 
 function onNativeMessage(message) {
     console.log('background native message: ', message);
-    if (logsPort && typeof message == 'object' &&  message.msgType === 'log') {
+    if (logsPort && typeof message == 'object' && message.msgType === 'log') {
         logsPort.postMessage(message.msg);
     }
     try {
         if (message.msgType === 'systemCheck') {
             const hasGetIplayer = message.hasGetIplayer;
             const isSnap = message.isSnap;
-            sysStatus = {hasGetIplayer, isSnap};
+            sysStatus = { hasGetIplayer, isSnap };
             // TODO: store system status in local storage and check it when opening any page of the extension and display warning if system not compatible with extension
             // TODO: contentScript shouldn't enhance BBC sounds pages if system not compatible
             // !hasGetIplayer && alert('get_iplayer was not detected on your system. dl-bbc-radio requires it in order to function. Get it from: https://github.com/get-iplayer/get_iplayer/wiki/installation');
@@ -59,56 +59,52 @@ function onNativeMessage(message) {
 }
 
 function connect() {
-    var hostName = "dl.bbc.radio";
+    var hostName = 'dl.bbc.radio';
     port = chrome.runtime.connectNative(hostName);
     port.onDisconnect.addListener(onDisconnected);
     port.onMessage.addListener(onNativeMessage);
-    chrome.browserAction.setBadgeText({text: 'on'});
+    chrome.browserAction.setBadgeText({ text: 'on' });
 }
 
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (!port) {
-            console.log('connecting.... empty port');
-            connect();
-        }
-        console.log('requesting dl for....', request);
-        port.postMessage(request);
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    if (!port) {
+        console.log('connecting.... empty port');
+        connect();
     }
-);
-
+    console.log('requesting dl for....', request);
+    port.postMessage(request);
+});
 
 // Logs
-chrome.runtime.onConnect.addListener(function(port) {
-    console.assert(port.name == "logsPort");
+chrome.runtime.onConnect.addListener(function (port) {
+    console.assert(port.name == 'logsPort');
     logsPort = port;
     logsPort.onDisconnect.addListener(() => {
         logsPort = null;
     });
 });
 
-
 // System check on installtion
-chrome.runtime.onInstalled.addListener(function() {
+chrome.runtime.onInstalled.addListener(function () {
     if (!port) {
         console.log('connecting.... empty port');
         connect();
     }
     console.log('system check starting....');
-    port.postMessage({cmd: 'systemCheck'});
-    chrome.storage.local.clear(function() {
+    port.postMessage({ cmd: 'systemCheck' });
+    chrome.storage.local.clear(function () {
         console.log('cleared storage');
     });
 });
 chrome.runtime.onStartup.addListener(() => {
     console.log('chrome started');
-    chrome.storage.local.clear(function() {
+    chrome.storage.local.clear(function () {
         console.log('cleared storage');
     });
 });
 chrome.runtime.onSuspend.addListener(() => {
     console.log('chrome stopped');
-    chrome.storage.local.clear(function() {
+    chrome.storage.local.clear(function () {
         console.log('cleared storage');
     });
 });
